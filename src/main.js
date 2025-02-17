@@ -67,6 +67,7 @@ const allToDos = new ManagerCreator();
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   inputNameEl.value = "";
+
   console.log("submit form");
 
   console.log(inputName);
