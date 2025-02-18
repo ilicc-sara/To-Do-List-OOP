@@ -33,7 +33,7 @@ class ManagerCreator {
   }
 
   findId(id) {
-    this.toDos.find((toDo) => toDo.id === id);
+    return this.toDos.find((toDo) => toDo.id === id);
   }
 }
 
@@ -45,7 +45,7 @@ form.addEventListener("submit", function (e) {
   allToDos.set(newToDo);
 
   const item = document.createElement("li");
-  item.innerHTML = `${inputName} <div class="btn-cont"><button class="btn-done">DONE</button><button class="btn-del">DELETE</button></div>`;
+  item.innerHTML = `<span class="todo-name">${inputName}</span> <div class="btn-cont"><button class="btn-done">DONE</button><button class="btn-del">DELETE</button></div>`;
   item.setAttribute("data-id", newToDo.id);
   toDoListContainer.appendChild(item).className = "to-do";
   inputNameEl.value = "";
@@ -54,4 +54,17 @@ form.addEventListener("submit", function (e) {
 toDoListContainer.addEventListener("click", function (e) {
   // prettier-ignore
   if (!e.target.classList.contains("btn-done") && !e.target.classList.contains("btn-del")) return;
+
+  const targetEl = e.target.closest(".to-do");
+  const target = allToDos.findId(targetEl.getAttribute("data-id"));
+
+  if (e.target.classList.contains("btn-done")) {
+    target.changeIsDone();
+
+    e.target.style.backgroundColor = "gray";
+    targetEl.querySelector(".todo-name").style.textDecoration = "line-through";
+  }
+
+  if (e.target.classList.contains("btn-del")) {
+  }
 });
