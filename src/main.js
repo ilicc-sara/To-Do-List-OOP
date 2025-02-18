@@ -3,6 +3,7 @@ import "./style.css";
 
 const form = document.querySelector(".form");
 const inputNameEl = document.querySelector(".input-name");
+const toDoListContainer = document.querySelector(".todo-list");
 
 let inputName = "";
 
@@ -38,9 +39,6 @@ class ManagerCreator {
 
 const allToDos = new ManagerCreator();
 
-// const toGo = new ToDoCreator("run");
-// console.log(toGo);
-
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   inputNameEl.value = "";
@@ -49,4 +47,10 @@ form.addEventListener("submit", function (e) {
   allToDos.set(newToDo);
 
   console.log(allToDos.toDos);
+
+  const item = document.createElement("li");
+
+  item.innerHTML = `${inputName} <div class="btn-cont"><button class="btn-done">DONE</button><button class="btn-del">DELETE</button></div>`;
+  item.setAttribute("data-id", newToDo.id);
+  toDoListContainer.appendChild(item).className = "to-do";
 });
