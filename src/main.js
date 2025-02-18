@@ -35,6 +35,10 @@ class ManagerCreator {
   findId(id) {
     return this.toDos.find((toDo) => toDo.id === id);
   }
+
+  filter(item) {
+    this.toDos = this.toDos.filter((toDo) => toDo.id !== item.id);
+  }
 }
 
 const allToDos = new ManagerCreator();
@@ -66,5 +70,8 @@ toDoListContainer.addEventListener("click", function (e) {
   }
 
   if (e.target.classList.contains("btn-del")) {
+    allToDos.filter(target);
+
+    targetEl.remove();
   }
 });
