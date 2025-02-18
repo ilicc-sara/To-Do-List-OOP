@@ -10,39 +10,16 @@ inputNameEl.addEventListener("input", function (e) {
   inputName = e.target.value;
 });
 
-class ToDoCreator {
+class ToDo {
   constructor(name) {
     this.name = name;
     this.id = crypto.randomUUID();
     this.isDone = false;
   }
 
-  // set id(id) {
-  //   id = crypto.randomUUID();
-  //   this._id = id;
-  // }
-
-  // set name(name) {
-  //   name = "";
-  //   this._name = name;
-  // }
-
-  // set isDone(value) {
-  //   value = false;
-  //   this._isDone = value;
-  // }
-
-  // get id() {
-  //   return this._id;
-  // }
-
-  // get name() {
-  //   return this._name;
-  // }
-
-  // get isDone() {
-  //   return this._isDone;
-  // }
+  changeIsDone() {
+    this.isDone = !this.isDone;
+  }
 }
 
 class ManagerCreator {
@@ -50,12 +27,12 @@ class ManagerCreator {
     this.toDos = [];
   }
 
-  // get toDos() {
-  //   return this.toDos;
-  // }
-
   set(toDo) {
     this.toDos.push(toDo);
+  }
+
+  findId(id) {
+    this.toDos.find((toDo) => toDo.id === id);
   }
 }
 
@@ -67,14 +44,9 @@ const allToDos = new ManagerCreator();
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   inputNameEl.value = "";
-
-  console.log("submit form");
-
-  console.log(inputName);
-
-  const newToDo = new ToDoCreator(inputName);
-
-  console.log(newToDo);
+  const newToDo = new ToDo(inputName);
 
   allToDos.set(newToDo);
+
+  console.log(allToDos.toDos);
 });

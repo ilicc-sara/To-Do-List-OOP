@@ -5,7 +5,8 @@
 }
 
 body {
-  background-color: rgb(55, 55, 55);
+  /* background-color: rgb(55, 55, 55); */
+  background: linear-gradient(to right, #af5e94, #5949f2);
   font-family: sans-serif;
 }
 
@@ -40,7 +41,7 @@ body {
   justify-content: space-between;
   place-items: center;
   text-decoration: none;
-  background-color: yellow;
+  background-color: rgba(255, 255, 255, 0.745);
   height: 50px;
   width: 100%;
   /* border: 4px solid red; */
