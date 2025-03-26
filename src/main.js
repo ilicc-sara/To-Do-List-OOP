@@ -31,11 +31,9 @@ class ManagerCreator {
   set(toDo) {
     this.toDos.push(toDo);
   }
-
   findId(id) {
     return this.toDos.find((toDo) => toDo.id === id);
   }
-
   filter(item) {
     this.toDos = this.toDos.filter((toDo) => toDo.id !== item.id);
   }
